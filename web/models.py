@@ -6,13 +6,19 @@ from django.contrib.auth.models import User
 class category(models.Model):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 class buy_from(models.Model):
     choices = [
         ('store','store'),
-        ('site','online')
+        ('site','site')
     ]
     name = models.CharField(max_length=255)
     type = models.CharField(choices=choices,max_length=255)
+
+    def __str__(self):
+        return f'{self.name}-{self.type}'
 
 class orders(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -21,12 +27,18 @@ class orders(models.Model):
     amount = models.BigIntegerField()
     text = models.CharField(max_length=255,blank=True)
 
+    def __str__(self):
+        return f'{self.date}-{self.category}'
+
 class changes(models.Model):
     order = models.ManyToManyField(orders)
     date = models.DateField()
     rate = models.IntegerField()
     rial = models.BigIntegerField()
     lir = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.date}-{self.rate}'
 
 class buy(models.Model):
     order = models.ManyToManyField(orders)
@@ -35,10 +47,15 @@ class buy(models.Model):
     change = models.ManyToManyField(changes)
     buy_from = models.ForeignKey(buy_from,on_delete=models.CASCADE)
     text = models.CharField(max_length=255,blank=True)
+    def __str__(self):
+        return f'{self.date}-{self.category}'
 
 class otherCosts(models.Model):
     text = models.CharField(max_length=255)
     amount = models.BigIntegerField()
     date = models.DateField()
     order = models.ManyToManyField(orders)
+    def __str__(self):
+        return self.text
+
 
