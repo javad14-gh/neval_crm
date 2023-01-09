@@ -50,6 +50,7 @@ class buy(models.Model):
     date = models.DateField()
     amount = models.BigIntegerField()
     change = models.ManyToManyField(changes)
+    category = models.ManyToManyField(category)
     buy_from = models.ForeignKey(buy_from,on_delete=models.CASCADE)
     text = models.CharField(max_length=255,blank=True)
     def __str__(self):
