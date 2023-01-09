@@ -33,7 +33,7 @@ class orders(models.Model):
     text = models.CharField(max_length=255,blank=True)
 
     def __str__(self):
-        return f'{self.date}-{self.category}'
+        return f'{self.date}-{self.user}'
 
 class changes(models.Model):
     order = models.ManyToManyField(orders)
@@ -54,7 +54,7 @@ class buy(models.Model):
     buy_from = models.ForeignKey(buy_from,on_delete=models.CASCADE)
     text = models.CharField(max_length=255,blank=True)
     def __str__(self):
-        return f'{self.date}-{self.category}'
+        return f'{self.date}-{self.buy_from}-{self.amount}'
 
 class otherCosts(models.Model):
     text = models.CharField(max_length=255)
