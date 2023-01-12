@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <title>Neval CRM</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-rtl.css' %}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top rtl" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header navbar-right">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href=#>
+                    neval crm
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    {% block content %}
+
+
+
+    {% endblock %}
+    <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</body>
