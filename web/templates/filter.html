@@ -5,16 +5,38 @@
   <input type="text" name="rate">
   <button type="submit">filter</button>
 </form>
-<form method="get">
-  <ul>
-    {% for x in sum %}
-    <li>
-      {{x.date}}
-    </li>
-    <li>
-      {{x.rate}}
-    </li>
-    {% endfor %}
-  </ul>
-</form>
+{% if context == None %}
+<div>لطفا شماره پیگیری را وارد نمایید</div>
+{% else %}
+<div class="row">
+  <div class="col-xs-6">
+    <form method="get">
+      <table>
+        <tr>
+          <th>ردیف</th>
+          <th>مبلغ</th>
+          <th>سود</th>
+        </tr>
+        {% for x in sum %}
+        <tr>
+          <td>
+            {{x.rate}}
+          </td>
+          <td>
+            {{x.rial}}
+          </td>
+          <td>
+            {{x.lir}}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </form>
+  </div>
+  <div class="col-xs-6">
+    مانده این سفارش برابر است با
+    {{mande}}
+  </div>
+{% endif %}
+</div>
 {% endblock %}

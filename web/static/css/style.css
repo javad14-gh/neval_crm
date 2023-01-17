@@ -90,7 +90,10 @@ body {
 .navbar-inverse {
     background: #124242;
 }
-
+table, th, td {
+    border:1px solid black;
+    padding: 4px !important;
+  }
 
 
 @media(min-width:768px) {
