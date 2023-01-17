@@ -3,10 +3,9 @@ from .models import buy , orders , changes
 from django.db.models import Sum
 # Create your views here.
 
-def remained(oredrID):
-    this_order = orders.objects.filter(followCode = oredrID).get()
-    buys = buy.objects.filter(order = this_order)
-    lirs = changes.objects.filter(order = this_order).aggregate(Sum('lir'))
+def remained(order):
+    buys = buy.objects.filter(order = order)
+    lirs = changes.objects.filter(order = order).aggregate(Sum('lir'))
     mande = lirs['lir__sum']
     for x in buys:
         mande -= (x.sud)+ (x.amount)
@@ -22,7 +21,7 @@ def submit_buy(request):
         this_id = a['rate']
         this_order = orders.objects.filter(followCode = this_id).get()
         context['sum'] = changes.objects.filter(order = this_order)
-        context['mande'] = remained(this_id)
+        context['mande'] = remained(this_order)
     return render(request,template_name= 'filter.html',context=context)
 
 

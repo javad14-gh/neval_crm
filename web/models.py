@@ -34,8 +34,8 @@ class orders(models.Model):
     category = models.ManyToManyField(category)
     amount = models.BigIntegerField()
     text = models.CharField(max_length=255,blank=True)
-    s = int(sha1(str(time()).encode("utf-8")).hexdigest(), 16) % (10 ** 8)
-    followCode = models.CharField(default=s,auto_created=True,unique=True,max_length=255)
+    s = str(int(sha1(str(time()).encode("utf-8")).hexdigest(), 16) % (10 ** 8))
+    followCode = models.CharField(default=s,auto_created=True,unique=True,max_length=255,editable=False)
     def __str__(self):
         return self.followCode
 

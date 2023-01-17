@@ -5,9 +5,7 @@
   <input type="text" name="rate">
   <button type="submit">filter</button>
 </form>
-{% if context == None %}
-<div>لطفا شماره پیگیری را وارد نمایید</div>
-{% else %}
+{% if sum %}
 <div class="row">
   <div class="col-xs-6">
     <form method="get">
@@ -37,6 +35,8 @@
     مانده این سفارش برابر است با
     {{mande}}
   </div>
+  {% else %}
+  <div>لطفا شماره پیگیری را وارد نمایید</div>
 {% endif %}
 </div>
 {% endblock %}
